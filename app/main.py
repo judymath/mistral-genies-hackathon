@@ -10,15 +10,21 @@ def main():
     
     if project_description:
         mistral_evaluator = MistralEvaluator(project_description)
-        st.markdown("### 📊 Generated Metrics")
-        st.markdown("Based on your description, our evaluator suggests the following metrics. Which ones would you like to use?")
+        st.markdown("### 📋 Metrics")
+        st.markdown("Which metrics would you like to use?")
         # todo : replace options by generated metrics
-        options = mistral_evaluator.generate_metrics()
+        #generated_metrics = mistral_evaluator.generate_metrics()
+        generated_metrics = ["🎯 Precision", "🛑 Toxicity", "👽 Hallucination"]
         
         selected_metrics = []
-        for option in options:
-            if st.checkbox(option):
-                selected_metrics.append(option)
+        for metric in generated_metrics:
+            if st.checkbox(metric):
+                selected_metrics.append(metric)
+        if selected_metrics :
+            st.markdown("### 📊 Generated dataset")
+            st.markdown("Based on the selected metrics, here are some examples of generated tests")
+            generated_questions = mistral_evaluator.generate_questions(selected_metrics)
+            st.markdown(f"{generated_questions}")
         
 
 if __name__ == "__main__":
