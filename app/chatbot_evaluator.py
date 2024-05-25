@@ -3,12 +3,10 @@ import pandas as pd
 from helpers import mistral
 
 
-
-
 def create_metrics_schema(metrics_text):
     # Split the input string by commas to get individual metrics
     metrics = [metric.strip() for metric in metrics_text.split(',')]
-    
+
     # Initialize the schema dictionary
     schema = {
         "type": "object",
@@ -20,19 +18,19 @@ def create_metrics_schema(metrics_text):
     for metric in metrics:
         schema["properties"][metric] = {"type": "float"}
         schema["required"].append(metric)
-    
-    
+
     return schema
 
-def evaluate_chatbot(combined_dialogues, metrics_text):
-    results=[]
-    metrics_json_schema = create_metrics_schema(metrics_text)
 
+def evaluate_chatbot(combined_dialogues, metrics_text):
+    results = []
     metrics_text = """Understanding User Queries, Providing Relevant Information, User Interaction and Engagement, 
     Personalization and Context Awareness, Overall Satisfaction"""
+    metrics_json_schema = create_metrics_schema(metrics_text)
 
-    for i in range(1):
-        chat=combined_dialogues.iloc[i,1]
+
+    for i in range(1, 4):
+        chat = combined_dialogues.iloc[i, 1]
         prompt = f"""
         You are a quality assurance specialist evaluating AI assistants. 
         Your goal is to assess the user's level of satisfaction with the chat based on the following metrics:
@@ -43,16 +41,10 @@ def evaluate_chatbot(combined_dialogues, metrics_text):
 
         {metrics_json_schema}
         """
-        print(prompt)
-        response = mistral(prompt, model= 'mistral-large-latest', is_json=True)
+        response = {'Dialogue': chat}
+        response.update(eval(mistral(prompt, model='mistral-large-latest', is_json=True)))
         results.append(response)
-    
-    results_df=pd.DataFrame([eval(i) for i in results])
+
+    results_df = pd.DataFrame(results)
 
     return results_df
-
-
-
-
-
-
