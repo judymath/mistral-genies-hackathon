@@ -30,7 +30,8 @@ def main():
             metrics_text = "Some metrics text or configuration"  # Update this as per your requirement
 
             # Evaluate the chatbot
-            results = evaluate_chatbot(combined_dialogues, metrics_text)
+            mistral_judge = MistralJudge()
+            results = mistral_judge.evaluate(combined_dialogues)
 
             # Display the results in Streamlit
             st.markdown("### Evaluation Results")
