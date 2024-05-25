@@ -7,8 +7,4 @@ metrics = {
     "Summarization": [],
     "Translation": [],
     "Data Extraction": []
-
-
-
-
 }
