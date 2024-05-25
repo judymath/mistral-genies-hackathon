@@ -9,12 +9,22 @@ def main():
     project_description = st.text_input("📝 Please provide a brief description of your LLm Based application:")
     
     if project_description:
+        st.markdown("### 📋 Metrics")
+        st.markdown("Which metrics would you like to use?")
         mistral_evaluator = MistralEvaluator(project_description)
         st.markdown("### 📋 Metrics")
         st.markdown("Which metrics would you like to use?")
         # todo : replace options by generated metrics
         #generated_metrics = mistral_evaluator.generate_metrics()
-        generated_metrics = ["🎯 Precision", "🛑 Toxicity", "👽 Hallucination"]
+        generated_metrics = ["Coherence",
+                              "Readability",
+                              "Toxicity",
+                              "Hallucination", 
+                              "Providing Relevant Information", 
+                              "User Interaction and Engagement", 
+                              "Personalization and Context Awareness",
+                              "Empathy", 
+                              ]
         
         selected_metrics = []
         for metric in generated_metrics:
