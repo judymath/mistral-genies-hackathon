@@ -1,5 +1,6 @@
 # mistral-genies-hackathon
-# MistralJudge - Comprehensive AI Chatbot Evaluation Platform
+![alt text](https://github.com/judymath/mistral-genies-hackathon/blob/main/header.png)
+#  Comprehensive AI Chatbot Evaluation Platform 
 
 Welcome to the MistralJudge repository! This project is designed to provide comprehensive evaluations for AI chatbots, customized for various industry use cases. MistralJudge leverages the power of Mistral AI models and provides an interactive user interface built with Streamlit.
 ![alt text](https://github.com/judymath/mistral-genies-hackathon/blob/main/mistraljudge.png)
