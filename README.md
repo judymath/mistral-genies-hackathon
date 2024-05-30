@@ -1,4 +1,7 @@
 # mistral-genies-hackathon
+This project was developped as a part of [Mistral AI Paris Hackathon](https://mistralparishack.devpost.com/)
+
+Project pitch is available at https://devpost.com/software/genies
 ![alt text](https://github.com/judymath/mistral-genies-hackathon/blob/main/header.png)
 #  Comprehensive AI Chatbot Evaluation Platform 
 
